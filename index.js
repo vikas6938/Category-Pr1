@@ -4,7 +4,7 @@ const catRouter = require('./routers/category.router');
 const subcatRouter = require('./routers/subcategory.router');
 const extraRouter = require('./routers/extracategory.router');
 const app = express();
-const port = 8081;
+const port = 3000;
 
 // database connection
 db();
@@ -26,5 +26,5 @@ app.use('/extracategory', extraRouter);
 // listen server
 app.listen(port, (err) =>{
     if(err)throw err;
-        console.log('server is started on http://localhost:8081');
+        console.log('server is started on http://localhost:3000');
 })

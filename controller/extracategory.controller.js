@@ -1,10 +1,13 @@
 const extracategory = require("../models/extracategory.schema");
+const subcategory = require("../models/subcategory.schema");
 
 
 const create = async (req, res) => {
     try {
+        console.log(req.body)
         let data = await extracategory.create(req.body);
-        res.send(data);
+        //res.send(data);
+        res.redirect('/extracategory/create')
     } catch (error) {
         console.log(error);
     }
@@ -38,7 +41,8 @@ const table = async (req, res) => {
 }
 const form = async (req, res) => {
     try {
-        res.render('Pages/addExtraCategroryForm')
+        const subcategories = await subcategory.find().populate('categoryID');
+        res.render('Pages/addExtraCategroryForm',  { subcategories: subcategories })
     } catch (error) {
         console.log(error)
     }
